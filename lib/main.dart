@@ -29,11 +29,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  bool cambiar = false;
 
-  void _incrementCounter() {
+  void toggleCambiar() {
     setState(() {
-      _counter++;
+      cambiar = !cambiar;
     });
   }
 
@@ -48,21 +48,18 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            cambiar 
+              ? Image.asset('images/mono2.jpg', width: 500, height: 500)
+              : Image.asset('images/mono1.png', width: 500, height: 500),
+            TextButton(
+              onPressed: () { 
+                toggleCambiar();
+              },
+              child: Text('MAGIA'),
+            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
