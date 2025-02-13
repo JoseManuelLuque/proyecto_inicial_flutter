@@ -12,10 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App Inicial Flutter PMDM',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 245, 128, 39)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'App Flutter'),
     );
   }
 }
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(widget.title),
       ),
       body: Center(
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
             cambiar 
               ? Image.asset('images/mono2.jpg', width: 500, height: 500)
               : Image.asset('images/mono1.png', width: 500, height: 500),
-            TextButton(
+            OutlinedButton(
               onPressed: () { 
                 toggleCambiar();
               },
