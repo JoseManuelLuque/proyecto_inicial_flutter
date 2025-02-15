@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'App Inicial Flutter PMDM',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 245, 128, 39)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 255, 247, 86)),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'App Flutter'),
@@ -30,10 +30,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool cambiar = false;
+  String texto = "ABRIR 🔑";
 
   void toggleCambiar() {
     setState(() {
       cambiar = !cambiar;
+      texto = cambiar ? "CERRAR 🔒" : "ABRIR 🔑";
     });
   }
 
@@ -41,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
       body: Center(
@@ -49,13 +51,13 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             cambiar 
-              ? Image.asset('images/mono2.jpg', width: 500, height: 500)
-              : Image.asset('images/mono1.png', width: 500, height: 500),
+              ? Image.asset('assets/images/abierto.jpg', width: 500, height: 500)
+              : Image.asset('assets/images/cerrado.jpg', width: 500, height: 500),
             OutlinedButton(
               onPressed: () { 
                 toggleCambiar();
               },
-              child: Text('MAGIA'),
+              child: Text(texto),
             )
           ],
         ),
